@@ -1,8 +1,18 @@
 var express = require('express');
 var router = express.Router();
+const userModel = require("./users")
 
 router.get("/", function(req, res){
   res.render("index");
 })
+router.get("/create", function(req, res){
+  const newUser = userModel({
+    user: "JohnDoe",
+    email: "john.doe@example.com",
+    name: "John Doe",
+    age: 21
+  });
+  res.send(newUser);
+});
 
 module.exports = router;

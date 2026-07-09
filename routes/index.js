@@ -3,8 +3,14 @@ var router = express.Router();
 const userModel = require("./users");
 
 router.get("/", function(req, res){
+  req.session.user = "JohnDoe";
   res.render("index");
 });
+
+router.get("/getSession", function(req, res){
+  res.send(req.session.user);
+});
+
 
 // router.get("/create", function(req, res){
 //   const newUser = userModel({
@@ -21,9 +27,9 @@ router.get("/", function(req, res){
 //   res.send(allUsers);
 // });
 
-router.get("/delete", async function(req, res){
-  let deletedUser = await userModel.findOneAndDelete({user: "JohnDoe"});
-  res.send(deletedUser);
-});
+// router.get("/delete", async function(req, res){
+//   let deletedUser = await userModel.findOneAndDelete({user: "JohnDoe"});
+//   res.send(deletedUser);
+// });
 
 module.exports = router;

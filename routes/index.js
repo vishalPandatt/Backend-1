@@ -8,7 +8,8 @@ router.get("/", function(req, res){
 });
 
 router.get("/getSession", function(req, res){
-  res.send(req.session.user);
+  res.send("current session user: ");
+  console.log(req.session);
 });
 
 

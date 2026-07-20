@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const mongoose = require('mongoose');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+mongoose.connect('mongodb://localhost:27017/mydatabase');
+
+mongoose.Schema({
+  username: String,
+  password: String,
+  description: String,
+  categories:{
+    type: array,
+    default: []
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-module.exports = router;
+mongoose.model('User', userSchema);

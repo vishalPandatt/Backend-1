@@ -32,7 +32,9 @@ router.get('/Create',async function(req, res) {
     description: 'A sample user',
     categories: ['node', 'react']
   });
-  res.send('User created successfully');
+  res.send('userdata');
 });
+
+
 
 module.exports = router;
